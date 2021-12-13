@@ -11,13 +11,16 @@
 </p>
 
 <% if @store.reviews.present? %>
-  <h3>Reviews</h3>
+  <h2>Reviews</h2>
   <ul>
     <% @store.reviews.each do |review| %>
       <li> <%= review.content %> </li>
     <% end %>
   </ul>
 <% end %>
+
+<h3>Add a review</h3>
+<%= render partial: 'reviews/form', locals: { review: @store.reviews.new } %>
 
 <%= link_to 'Edit', edit_store_path(@store) %> |
 <%= link_to 'Back', stores_path %>

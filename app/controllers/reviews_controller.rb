@@ -24,11 +24,11 @@ end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_store
-      @store = Store.find(params[:id])
+      @store = Store.find(params[:store_id])
     end
 
     # Only allow a list of trusted parameters through.
     def review_params
-      params.require(:review).permit(:content, :name, :store_id)
+      params.require(:review).permit(:content, :name)
     end
 end
