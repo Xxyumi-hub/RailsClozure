@@ -10,5 +10,14 @@
   <%= @store.address %>
 </p>
 
+<% if @store.reviews.present? %>
+  <h3>Reviews</h3>
+  <ul>
+    <% @store.reviews.each do |review| %>
+      <li> <%= review.content %> </li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= link_to 'Edit', edit_store_path(@store) %> |
 <%= link_to 'Back', stores_path %>

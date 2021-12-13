@@ -1,65 +1,30 @@
 class ReviewsController < ApplicationController
-  before_action :set_review, only: %i[ show edit update destroy ]
+  before_action :set_store
 
-  # GET /reviews or /reviews.json
-  def index
-    @reviews = Review.all
-  end
-
-  # GET /reviews/1 or /reviews/1.json
-  def show
-  end
-
-  # GET /reviews/new
-  def new
-    @review = Review.new
-  end
-
-  # GET /reviews/1/edit
-  def edit
-  end
-
-  # POST /reviews or /reviews.json
   def create
-    @review = Review.new(review_params)
+    @review = @store.reviews.create(review_params)
+    redirect_to @store
+end
+def edit
+    @review = Review.find(params[:id])
+end
 
-    respond_to do |format|
-      if @review.save
-        format.html { redirect_to @review, notice: "Review was successfully created." }
-        format.json { render :show, status: :created, location: @review }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @review.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+def update
+    @review = Review.find(params[:id])
+    @review.update(review_params)
+    redirect_to @store
+end
 
-  # PATCH/PUT /reviews/1 or /reviews/1.json
-  def update
-    respond_to do |format|
-      if @review.update(review_params)
-        format.html { redirect_to @review, notice: "Review was successfully updated." }
-        format.json { render :show, status: :ok, location: @review }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @review.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /reviews/1 or /reviews/1.json
-  def destroy
+def destroy
+    @review = Review.find(params[:id])
     @review.destroy
-    respond_to do |format|
-      format.html { redirect_to reviews_url, notice: "Review was successfully destroyed." }
-      format.json { head :no_content }
-    end
-  end
+    redirect_to @store
+end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_review
-      @review = Review.find(params[:id])
+    def set_store
+      @store = Store.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
