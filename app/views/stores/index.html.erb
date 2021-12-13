@@ -1,7 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Stores</h1>
+<h1>Welcome to Clozure</h1>
+<hr>
+<p>Post stores that are having closure sales for all to share!</p>
+  
 
+<h2>Stores</h2>
 <table>
   <thead>
     <tr>
@@ -11,6 +15,9 @@
     </tr>
   </thead>
 
+  <% if @stores.empty? %>
+  <p>There are no stores yet.</p>
+  <% else %>
   <tbody>
     <% @stores.each do |store| %>
       <tr>
@@ -21,6 +28,7 @@
         <td><%= link_to 'Destroy', store, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
+  <% end %>
   </tbody>
 </table>
 
