@@ -1,4 +1,5 @@
 class StoresController < ApplicationController
+  rescue_from ActiveRecord::RecordNotFound, with: :catch_not_found
   before_action :set_store, only: %i[ show edit update destroy ]
 
   # GET /stores or /stores.json
@@ -8,6 +9,8 @@ class StoresController < ApplicationController
 
   # GET /stores/1 or /stores/1.json
   def show
+    @store = Store.find(params[:id])
+    @reviews = @store.reviews
   end
 
   # GET /stores/new
@@ -17,6 +20,7 @@ class StoresController < ApplicationController
 
   # GET /stores/1/edit
   def edit
+    @store = Store.find(params[:id])
   end
 
   # POST /stores or /stores.json
@@ -65,5 +69,9 @@ class StoresController < ApplicationController
     # Only allow a list of trusted parameters through.
     def store_params
       params.require(:store).permit(:name, :address)
+    end
+    def catch_not_found(e)
+      Rails.logger.debug("We had a 'not found' exception")
+      redirect_to(stores_path, :notice => 'Record not found')
     end
 end
