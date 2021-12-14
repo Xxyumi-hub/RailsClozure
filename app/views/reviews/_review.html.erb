@@ -2,7 +2,7 @@
       <strong><%= review.name %> says:</strong>
       <%= review.content %>
       <div class="review-admin">
-      <%= link_to "Edit", edit_store_review_path(@store, review) %>
+      <%= link_to "Edit", edit_store_review_path(@store, review) %> |
       <%= link_to "Delete", [@store, review], method: :delete %>
       </div>
 </div>

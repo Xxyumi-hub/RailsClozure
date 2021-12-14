@@ -9,10 +9,12 @@
   <strong>Address:</strong>
   <%= @store.address %>
 </p>
+<br>
 
 <% if @store.reviews.present? %>
   <h2>Reviews</h2>
   <%= render @store.reviews %>
+  <br>
 <% end %>
 
 <h3>Add a review</h3>
