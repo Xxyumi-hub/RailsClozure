@@ -1,24 +1,10 @@
-# README
+# Clozure
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## This is an app made with Ruby on Rails + Rspec that allows users to post stores that are having closure sales as well as leave reviews on the stores
 
-Things you may want to cover:
+* Ruby version - 3.0.1
 
-* Ruby version
+* How to run the test suite - rspec
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Deployment instructions:
+Run <code>bundle install</code> and then run <code>rails server -b 0.0.0.0</code>
