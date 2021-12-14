@@ -1,6 +1,6 @@
 # Clozure
 
-## This is an app made with Ruby on Rails + Rspec that allows users to post stores that are having closure sales as well as leave reviews on the stores
+### This is an app made with Ruby on Rails + Rspec that allows users to post stores that are having closure sales as well as leave reviews on the stores
 
 * Ruby version - 3.0.1
 
